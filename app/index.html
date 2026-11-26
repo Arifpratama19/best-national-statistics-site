@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NusaStat — Portal Statistik Indonesia</title>
+<meta name="description" content="Penduduk, ekonomi, dan kesejahteraan Indonesia dalam angka resmi terbaru: 38 provinsi, grafik interaktif, dan sumber yang jelas.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="#/">
+      <span class="brand-mark" aria-hidden="true">N</span>
+      <span class="brand-text"><strong>NusaStat</strong><em>Portal Statistik Indonesia</em></span>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Buka menu">☰ Menu</button>
+    <nav id="site-nav" class="site-nav" aria-label="Navigasi utama">
+      <a class="nav-link" data-route="" href="#/">Beranda</a>
+      <a class="nav-link" data-route="economy" href="#/economy">Ekonomi</a>
+      <a class="nav-link" data-route="population" href="#/population">Penduduk</a>
+      <a class="nav-link" data-route="social" href="#/social">Masyarakat</a>
+      <a class="nav-link" data-route="regions" href="#/regions">Provinsi</a>
+      <a class="nav-link" data-route="about" href="#/about">Tentang</a>
+    </nav>
+  </div>
+</header>
+
+<main id="view" class="container"></main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div>
+      <p><strong>NusaStat — Portal Statistik Indonesia.</strong> Situs independen, bukan situs resmi BPS.</p>
+      <p>Angka: BPS, Bank Indonesia, Kementerian Keuangan, PBB (UN WPP 2024). Setiap grafik mencantumkan sumber dan tahunnya.</p>
+    </div>
+    <nav aria-label="Navigasi kaki">
+      <a href="#/">Beranda</a>
+      <a href="#/economy">Ekonomi</a>
+      <a href="#/population">Penduduk</a>
+      <a href="#/social">Masyarakat</a>
+      <a href="#/regions">Provinsi</a>
+      <a href="#/about">Tentang &amp; Metodologi</a>
+    </nav>
+    <p class="footer-note">© <span id="year">2026</span> NusaStat · Data terakhir diperbarui 26 November 2026</p>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="charts.js"></script>
+<script src="views.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
