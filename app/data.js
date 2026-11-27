@@ -18,9 +18,9 @@ export const KPI = [
   { id: "growth", label: "Pertumbuhan ekonomi", value: "5,11%", sub: "2025 · dari 5,03% pada 2024", src: "BPS, PDB 2025", spark: [3.70, 5.31, 5.05, 5.03, 5.11], unit: "% y-on-y" },
   { id: "infl", label: "Inflasi", value: "1,91%", sub: "2025 · rata-rata tahunan", src: "BPS / IMF 2025", spark: [1.87, 5.51, 2.61, 1.57, 1.91], unit: "% y-on-y" },
   { id: "unemp", label: "Pengangguran terbuka", value: "4,85%", sub: "Agu 2025 · 7,46 jt orang", src: "BPS, Sakernas Agu 2025", spark: [6.49, 5.86, 5.32, 4.91, 4.85], unit: "% angkatan kerja" },
-  { id: "pov", label: "Kemiskinan", value: "8,47%", sub: "Mar 2025 · 23,85 jt orang", src: "BPS, Susenas Mar 2025", spark: [10.14, 9.54, 9.36, 9.03, 8.47], unit: "% penduduk" },
+  { id: "pov", label: "Kemiskinan", value: "8,07%", sub: "Mar 2026 · 22,93 jt orang", src: "BPS, Susenas Mar 2026", spark: [10.14, 9.54, 9.36, 9.03, 8.47, 8.07], unit: "% penduduk" },
   { id: "hdi", label: "Indeks Pembangunan Manusia", value: "75,02", sub: "2024 · dari 74,39 pada 2023", src: "BPS, IPM 2024", spark: [71.92, 72.29, 73.37, 74.39, 75.02], unit: "skala 0–100" },
-  { id: "gini", label: "Rasio Gini", value: "0,375", sub: "Mar 2025 · dari 0,379 setahun lalu", src: "BPS, Mar 2025", spark: [0.381, 0.384, 0.388, 0.379, 0.375], unit: "0 = merata" },
+  { id: "gini", label: "Rasio Gini", value: "0,368", sub: "Mar 2026 · dari 0,375 pada Mar 2025", src: "BPS, Mar 2026", spark: [0.381, 0.384, 0.388, 0.379, 0.375, 0.368], unit: "0 = merata" },
 ];
 
 // PDB harga berlaku (Rp triliun) dan pertumbuhan riil (% y-on-y). BPS.
@@ -141,7 +141,7 @@ export const POVERTY_SERIES = [
 export const GINI_SERIES = [
   { y: 2019, v: 0.382 }, { y: 2020, v: 0.385 }, { y: 2021, v: 0.381 },
   { y: 2022, v: 0.384 }, { y: 2023, v: 0.388 }, { y: 2024, v: 0.379 },
-  { y: 2025, v: 0.375 },
+  { y: 2025, v: 0.375 }, { y: 2026, v: 0.368 },
 ];
 // IPM nasional.
 export const HDI_SERIES = [
@@ -149,9 +149,9 @@ export const HDI_SERIES = [
   { y: 2022, v: 73.37 }, { y: 2023, v: 74.39 }, { y: 2024, v: 75.02 },
 ];
 export const WELFARE = {
-  garisKemiskinan: "Rp609.160/kapita/bulan (Mar 2025)",
-  miskinKota: "6,73% (Mar 2025)",
-  miskinDesa: "11,03% (Mar 2025)",
+  garisKemiskinan: "Rp669.235/kapita/bulan (Mar 2026)",
+  miskinKota: "6,34% (Mar 2026)",
+  miskinDesa: "10,67% (Mar 2026)",
   kemiskinanEkstrem: "0,85% (2025)",
   pkh: "10,0 jt keluarga penerima manfaat (2024)",
   sembako: "18,8 jt keluarga penerima manfaat (2024)",
@@ -260,22 +260,23 @@ export const PROV_NOTE = "Penduduk dan luas wilayah: BPS 2024. PDRB: BPS 2024 (h
 
 // ---- Rilis terbaru & kalender (BPS) ----
 export const RELEASES = [
-  { t: "Pertumbuhan Ekonomi Indonesia Triwulan III-2025", d: "5 Nov 2025", v: "5,11% (y-on-y)" },
-  { t: "Tingkat Pengangguran Terbuka Agustus 2025", d: "5 Nov 2025", v: "4,85%" },
+  { t: "Kemiskinan Maret 2026", d: "5 Agu 2026", v: "8,07%" },
+  { t: "Pertumbuhan Ekonomi Triwulan IV-2025", d: "5 Feb 2026", v: "5,39% (y-on-y); 2025 penuh 5,11%" },
+  { t: "Profil Kemiskinan September 2025", d: "5 Feb 2026", v: "8,25%" },
   { t: "Inflasi November 2025", d: "1 Des 2025", v: "2,86% (y-on-y)" },
   { t: "Ekspor–Impor Oktober 2025", d: "1 Des 2025", v: "Surplus US$2,4 miliar" },
-  { t: "Indeks Pembangunan Manusia 2024", d: "15 Mei 2025", v: "75,02" },
+  { t: "Pertumbuhan Ekonomi Triwulan III-2025", d: "5 Nov 2025", v: "5,04% (y-on-y)" },
+  { t: "Tingkat Pengangguran Terbuka Agustus 2025", d: "5 Nov 2025", v: "4,85%" },
   { t: "Kemiskinan Maret 2025", d: "15 Jul 2025", v: "8,47%" },
-  { t: "Upah Buruh dan Kemiskinan September 2025", d: "15 Jan 2026", v: "8,25%" },
-  { t: "Pertumbuhan Ekonomi Triwulan IV-2025", d: "5 Feb 2026", v: "Jadwal rilis BPS" },
+  { t: "Indeks Pembangunan Manusia 2024", d: "15 Mei 2025", v: "75,02" },
 ];
 export const RELEASE_CALENDAR = [
   { t: "Inflasi Desember 2026", d: "2 Jan 2027", s: "Berita Resmi Statistik" },
   { t: "Ekspor–Impor November 2026", d: "15 Des 2026", s: "Berita Resmi Statistik" },
-  { t: "Pertumbuhan Ekonomi Triwulan III-2026", d: "5 Nov 2026", s: "Berita Resmi Statistik" },
-  { t: "Tingkat Pengangguran Terbuka Agustus 2026", d: "5 Nov 2026", s: "Berita Resmi Statistik" },
+  { t: "Pertumbuhan Ekonomi Triwulan IV-2026", d: "5 Feb 2027", s: "Berita Resmi Statistik" },
+  { t: "Kemiskinan September 2026", d: "Feb 2027", s: "Berita Resmi Statistik" },
+  { t: "Tingkat Pengangguran Terbuka Februari 2027", d: "5 Mei 2027", s: "Berita Resmi Statistik" },
   { t: "Indeks Pembangunan Manusia 2025", d: "Mei 2027", s: "Publikasi BPS" },
-  { t: "Kemiskinan Maret 2026", d: "Jul 2026", s: "Berita Resmi Statistik" },
   { t: "Proyeksi Penduduk 2025–2045", d: "2026", s: "Publikasi BPS" },
   { t: "Sensus Ekonomi 2026 (tahap lanjutan)", d: "2026", s: "Sensus BPS" },
 ];
@@ -291,7 +292,7 @@ export const SOURCES = [
 export const METHODS = [
   { t: "PDB", d: "Produk Domestik Bruto dihitung BPS dengan pendekatan produksi, pengeluaran, dan pendapatan; pertumbuhan memakai harga konstan 2010. Angka 2025 adalah angka sangat sementara." },
   { t: "Inflasi", d: "Indeks Harga Konsumen dihitung dari 90 kota (Survei Biaya Hidup 2022). Inflasi tahunan membandingkan IHK Desember dengan Desember tahun sebelumnya." },
-  { t: "Kemiskinan", d: "Garis kemiskinan = garis kemiskinan makanan + nonmakanan. Seseorang miskin bila pengeluaran per kapita per bulan di bawah garis (Rp609.160 pada Maret 2025)." },
+  { t: "Kemiskinan", d: "Garis kemiskinan = garis kemiskinan makanan + nonmakanan. Seseorang miskin bila pengeluaran per kapita per bulan di bawah garis (Rp669.235 pada Maret 2026)." },
   { t: "Pengangguran terbuka", d: "Survei Angkatan Kerja Nasional (Sakernas) dua kali setahun. TPT = penganggur dibagi angkatan kerja; bekerja didefinisikan bekerja minimal 1 jam dalam seminggu terakhir." },
   { t: "IPM", d: "Indeks Pembangunan Manusia menggabungkan umur panjang dan hidup sehat, pengetahuan, dan standar hidup layak. Skala 0–100; 70–79,99 berkategori tinggi." },
   { t: "Rasio Gini", d: "Mengukur ketimpangan pengeluaran. Nilai 0 berarti merata sempurna, 1 berarti timpang sempurna. Dihitung dari Susenas." },

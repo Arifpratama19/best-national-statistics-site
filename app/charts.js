@@ -31,7 +31,8 @@ export function lineChart(data, opts = {}) {
   if (max === min) max = min + 1;
   const top = niceMax(max), bot = min < 0 ? -niceMax(-min) : 0;
   const iw = w - padL - padR, ih = h - padT - padB;
-  const x = i => padL + (iw * i) / (data.length - 1);
+  // Satu titik (mis. rentang tahun satu tahun di halaman Ekonomi): pusatkan titiknya.
+  const x = i => data.length === 1 ? w / 2 : padL + (iw * i) / (data.length - 1);
   const y = v => padT + ih * (1 - (v - bot) / (top - bot));
   const color = opts.color || "#0e7490";
   const grid = [0, 0.25, 0.5, 0.75, 1].map(f => {

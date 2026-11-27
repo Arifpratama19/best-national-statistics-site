@@ -61,7 +61,7 @@ function renderHome() {
     <div class="hero-facts">
       <div><strong>285,7 jt</strong><span>penduduk (2025)</span></div>
       <div><strong>5,11%</strong><span>pertumbuhan ekonomi 2025</span></div>
-      <div><strong>8,47%</strong><span>penduduk miskin (Mar 2025)</span></div>
+      <div><strong>8,07%</strong><span>penduduk miskin (Mar 2026)</span></div>
       <div><strong>75,02</strong><span>IPM 2024</span></div>
     </div>
   </section>
@@ -114,7 +114,7 @@ function renderEkonomi() {
   </div>
   ${card("APBN — pendapatan, belanja, dan defisit", `<div class="table-wrap"><table class="tbl"><thead><tr><th>Tahun</th><th class="num">Pendapatan negara</th><th class="num">Belanja negara</th><th class="num">Defisit</th></tr></thead><tbody>${apbnRows}</tbody></table></div>` + srcNote(APBN_NOTE))}
   <section class="card"><h2>Apa yang mendorong pertumbuhan?</h2>
-  <p>Konsumsi rumah tangga menyumbang sekitar 54% PDB dan tumbuh 4,9% pada 2025; investasi (PMTB) tumbuh 5,1%; ekspor barang dan jasa tumbuh 6,9%. Dari sisi lapangan usaha, industri pengolahan, perdagangan, dan pertanian adalah tiga penopang terbesar. Utang pemerintah tercatat 40,5% PDB pada akhir 2025 — di bawah batas 60% yang ditetapkan undang-undang (Kementerian Keuangan).</p></section>`;
+  <p>Konsumsi rumah tangga menyumbang 53,8% PDB dan tumbuh 4,98% pada 2025; investasi (PMTB) tumbuh 5,04% pada triwulan III-2025; ekspor barang dan jasa tumbuh 7,03% sepanjang 2025. Dari sisi lapangan usaha, industri pengolahan, perdagangan, dan pertanian adalah tiga penopang terbesar. Utang pemerintah tercatat 40,5% PDB pada akhir 2025 — di bawah batas 60% yang ditetapkan undang-undang (Kementerian Keuangan).</p></section>`;
   document.getElementById("eco-from").addEventListener("change", e => {
     ecoFrom = Math.min(+e.target.value, ecoTo); renderEkonomi();
   });
@@ -186,11 +186,11 @@ function renderSejahtera() {
   const hdiProv = [...PROVINCES].sort((a, b) => b.hdi - a.hdi).slice(0, 8)
     .map(p => ({ label: p.n, v: p.hdi, tip: p.hdi.toFixed(2).replace(".", ",") }));
   app.innerHTML = `
-  ${pageHead("Kesejahteraan", "Kemiskinan 8,47% pada Maret 2025 — terendah dalam dua dekade — dengan garis kemiskinan Rp609.160 per kapita per bulan.")}
+  ${pageHead("Kesejahteraan", "Kemiskinan 8,07% pada Maret 2026 — terendah sepanjang sejarah pencatatan BPS — dengan garis kemiskinan Rp669.235 per kapita per bulan.")}
   <div class="stat-strip">
-    <div><strong>8,47%</strong><span>Miskin (Mar 2025)</span></div>
-    <div><strong>23,85 jt</strong><span>Jiwa miskin</span></div>
-    <div><strong>0,375</strong><span>Rasio Gini</span></div>
+    <div><strong>8,07%</strong><span>Miskin (Mar 2026)</span></div>
+    <div><strong>22,93 jt</strong><span>Jiwa miskin</span></div>
+    <div><strong>0,368</strong><span>Rasio Gini</span></div>
     <div><strong>75,02</strong><span>IPM 2024</span></div>
     <div><strong>0,85%</strong><span>Kemiskinan ekstrem</span></div>
   </div>
@@ -203,14 +203,14 @@ function renderSejahtera() {
     ${card("IPM tertinggi menurut provinsi, 2024", hbarChart(hdiProv, { color: "#15803d", aria: "Provinsi dengan IPM tertinggi" }) + srcNote("BPS, IPM 2024. DKI Jakarta (84,15) dan DI Yogyakarta (81,62) berkategori sangat tinggi (≥80)."))}
   </div>
   <div class="grid-2">
-    ${card("Ketimpangan — Rasio Gini", lineChart(giniLine, { color: "#6d28d9", aria: "Rasio Gini" }) + srcNote("BPS, Susenas Maret. Gini perkotaan 0,404 dan perdesaan 0,304 (Maret 2025)."))}
+    ${card("Ketimpangan — Rasio Gini", lineChart(giniLine, { color: "#6d28d9", aria: "Rasio Gini" }) + srcNote("BPS, Susenas Maret. Gini Maret 2026: 0,368 — naik dari 0,363 pada September 2025."))}
     <section class="card"><h2>Bantuan sosial</h2>
     <ul class="notes">
       <li><strong>PKH:</strong> ${esc(WELFARE.pkh)} — bantuan tunai bersyarat untuk keluarga sangat miskin.</li>
       <li><strong>Sembako / BPNT:</strong> ${esc(WELFARE.sembako)} — bantuan pangan non tunai Rp200.000/bulan.</li>
       <li><strong>PBI JKN:</strong> ${esc(WELFARE.pbiJkn)} — iuran jaminan kesehatan dibayar pemerintah.</li>
       <li><strong>Garis kemiskinan:</strong> ${esc(WELFARE.garisKemiskinan)}; kemiskinan kota ${esc(WELFARE.miskinKota)}, desa ${esc(WELFARE.miskinDesa)}.</li>
-    </ul>${srcNote("Kementerian Sosial dan BPJS Kesehatan, 2024; BPS, Maret 2025.")}</section>
+    </ul>${srcNote("Kementerian Sosial dan BPJS Kesehatan, 2024; BPS, Maret 2026.")}</section>
   </div>`;
 }
 
@@ -292,6 +292,18 @@ function provRows() {
 }
 function renderProvinsi() {
   const rows = provRows();
+  // Kesenjangan antarprovinsi — dihitung dari data yang sama dengan tabel.
+  const withGcap = PROVINCES.map(p => ({ ...p, dens: p.pop * 1000 / p.area, gcap: p.grdp * 1e12 / (p.pop * 1000) / 1e6 }));
+  const topGcap = [...withGcap].sort((a, b) => b.gcap - a.gcap).slice(0, 8)
+    .map(p => ({ label: p.n, v: +p.gcap.toFixed(1), tip: "Rp" + fmtID(p.gcap, 1) + " jt" }));
+  const maxG = withGcap.reduce((a, b) => b.gcap > a.gcap ? b : a);
+  const minG = withGcap.reduce((a, b) => b.gcap < a.gcap ? b : a);
+  const maxPov = withGcap.reduce((a, b) => b.pov > a.pov ? b : a);
+  const minPov = withGcap.reduce((a, b) => b.pov < a.pov ? b : a);
+  const maxHdi = withGcap.reduce((a, b) => b.hdi > a.hdi ? b : a);
+  const minHdi = withGcap.reduce((a, b) => b.hdi < a.hdi ? b : a);
+  const maxDens = withGcap.reduce((a, b) => b.dens > a.dens ? b : a);
+  const minDens = withGcap.reduce((a, b) => b.dens < a.dens ? b : a);
   const arrow = k => provState.sort === k ? (provState.dir === 1 ? " ▲" : " ▼") : "";
   const th = (k, label) => `<th data-sort="${k}" class="sortable${provState.sort === k ? " active" : ""}">${label}${arrow(k)}</th>`;
   const body = rows.map(p => `<tr data-prov="${esc(p.n)}">
@@ -308,6 +320,16 @@ function renderProvinsi() {
   </tr>`).join("");
   app.innerHTML = `
   ${pageHead("Provinsi", "Seluruh 38 provinsi — dari Aceh sampai Papua Pegunungan. Cari, urutkan, klik Detail, atau bandingkan dua provinsi berdampingan.")}
+  <div class="grid-2">
+    ${card("PDRB per kapita tertinggi, 2024", hbarChart(topGcap, { aria: "Provinsi dengan PDRB per kapita tertinggi" }) + srcNote("BPS 2024. PDRB per kapita dihitung dari PDRB dibagi penduduk; DKI Jakarta dan Kalimantan Timur tertinggi berkat jasa dan pertambangan."))}
+    <section class="card"><h2>Kesenjangan antarprovinsi</h2>
+    <ul class="notes">
+      <li><strong>PDRB per kapita:</strong> ${esc(maxG.n)} Rp${fmtID(maxG.gcap, 1)} juta berbanding ${esc(minG.n)} Rp${fmtID(minG.gcap, 1)} juta — selisih ${(maxG.gcap / minG.gcap).toFixed(1).replace(".", ",")}× lipat.</li>
+      <li><strong>Kemiskinan:</strong> ${minPov.pov.toFixed(2).replace(".", ",")}% di ${esc(minPov.n)} hingga ${maxPov.pov.toFixed(2).replace(".", ",")}% di ${esc(maxPov.n)} — rentang ${(maxPov.pov - minPov.pov).toFixed(2).replace(".", ",")} poin.</li>
+      <li><strong>IPM:</strong> ${maxHdi.hdi.toFixed(2).replace(".", ",")} di ${esc(maxHdi.n)} berbanding ${minHdi.hdi.toFixed(2).replace(".", ",")} di ${esc(minHdi.n)} — selisih ${(maxHdi.hdi - minHdi.hdi).toFixed(2).replace(".", ",")} poin.</li>
+      <li><strong>Kepadatan:</strong> ${fmtID(Math.round(maxDens.dens))} jiwa/km² di ${esc(maxDens.n)} berbanding ${fmtID(Math.round(minDens.dens))} jiwa/km² di ${esc(minDens.n)}.</li>
+    </ul>${srcNote("Dihitung dari data BPS 2024–2025 pada tabel di bawah. Kesenjangan terbesar ada pada PDRB per kapita dan kemiskinan — keduanya terkonsentrasi di Papua.")}</section>
+  </div>
   <section class="card"><h2>Pencarian &amp; pengurutan</h2>
     <div class="controls">
       <label>Cari provinsi <input id="prov-q" type="search" placeholder="mis. Jawa, Papua, Bali…" value="${esc(provState.q)}"></label>
