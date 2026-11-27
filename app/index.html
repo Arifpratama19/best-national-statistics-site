@@ -3,52 +3,34 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>NusaStat — Portal Statistik Indonesia</title>
-<meta name="description" content="Penduduk, ekonomi, dan kesejahteraan Indonesia dalam angka resmi terbaru: 38 provinsi, grafik interaktif, dan sumber yang jelas.">
+<title>NusaData — Portal Statistik Indonesia</title>
+<meta name="description" content="Portal statistik Indonesia: penduduk, ekonomi, pekerjaan, kemiskinan, pendidikan, kesehatan, dan perdagangan dari 38 provinsi. Data resmi BPS, Bank Indonesia, dan kementerian.">
+<link rel="icon" href="data:,">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="site-header">
-  <div class="header-inner">
-    <a class="brand" href="#/">
-      <span class="brand-mark" aria-hidden="true">N</span>
-      <span class="brand-text"><strong>NusaStat</strong><em>Portal Statistik Indonesia</em></span>
-    </a>
-    <button id="nav-toggle" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Buka menu">☰ Menu</button>
-    <nav id="site-nav" class="site-nav" aria-label="Navigasi utama">
-      <a class="nav-link" data-route="" href="#/">Beranda</a>
-      <a class="nav-link" data-route="economy" href="#/economy">Ekonomi</a>
-      <a class="nav-link" data-route="population" href="#/population">Penduduk</a>
-      <a class="nav-link" data-route="social" href="#/social">Masyarakat</a>
-      <a class="nav-link" data-route="regions" href="#/regions">Provinsi</a>
-      <a class="nav-link" data-route="about" href="#/about">Tentang</a>
-    </nav>
-  </div>
+<header class="topbar">
+  <a class="brand" href="#/"><span class="brand-mark" aria-hidden="true">◈</span><span><strong>NusaData</strong><small>Portal Statistik Indonesia</small></span></a>
+  <nav class="nav" aria-label="Navigasi utama">
+    <a href="#/">Beranda</a>
+    <a href="#/ekonomi">Ekonomi</a>
+    <a href="#/penduduk">Penduduk</a>
+    <a href="#/kerja">Ketenagakerjaan</a>
+    <a href="#/sejahtera">Kesejahteraan</a>
+    <a href="#/pendidikan">Pendidikan &amp; Kesehatan</a>
+    <a href="#/perdagangan">Perdagangan</a>
+    <a href="#/provinsi">Provinsi</a>
+    <a href="#/data">Data &amp; Metodologi</a>
+  </nav>
 </header>
-
-<main id="view" class="container"></main>
-
-<footer class="site-footer">
-  <div class="container footer-inner">
-    <div>
-      <p><strong>NusaStat — Portal Statistik Indonesia.</strong> Situs independen, bukan situs resmi BPS.</p>
-      <p>Angka: BPS, Bank Indonesia, Kementerian Keuangan, PBB (UN WPP 2024). Setiap grafik mencantumkan sumber dan tahunnya.</p>
-    </div>
-    <nav aria-label="Navigasi kaki">
-      <a href="#/">Beranda</a>
-      <a href="#/economy">Ekonomi</a>
-      <a href="#/population">Penduduk</a>
-      <a href="#/social">Masyarakat</a>
-      <a href="#/regions">Provinsi</a>
-      <a href="#/about">Tentang &amp; Metodologi</a>
-    </nav>
-    <p class="footer-note">© <span id="year">2026</span> NusaStat · Data terakhir diperbarui 26 November 2026</p>
+<main id="app" class="wrap"></main>
+<footer class="footer">
+  <div class="wrap">
+    <p><strong>NusaData</strong> — Portal Statistik Indonesia. Situs independen, bukan situs resmi pemerintah.</p>
+    <p>Angka dari BPS (Statistics Indonesia), Bank Indonesia, Kementerian Keuangan, Kementerian Kesehatan, Kementerian Sosial, Bank Dunia, dan PBB. Setiap grafik mencantumkan sumber dan tahun rujukannya. Terakhir diperbarui 27 November 2026.</p>
+    <p><a href="#/data">Sumber data &amp; metodologi</a> · <a href="#/provinsi">38 provinsi</a> · <a href="#/data">Unduh CSV</a></p>
   </div>
 </footer>
-
-<script src="data.js"></script>
-<script src="charts.js"></script>
-<script src="views.js"></script>
-<script src="main.js"></script>
+<script type="module" src="main.js"></script>
 </body>
 </html>
